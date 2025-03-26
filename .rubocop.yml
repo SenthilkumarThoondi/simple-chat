@@ -1,3 +1,11 @@
 AllCops:
   NewCops: enable
   EnabledByDefault: false
+
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns:
+    - '^\s*#'
+
+Metrics/MethodLength:
+  Max: 15

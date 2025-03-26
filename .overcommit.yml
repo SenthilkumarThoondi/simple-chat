@@ -1,4 +1,5 @@
 verify_signatures: false
+
 PrePush:
   Brakeman:
     enabled: true
@@ -8,6 +9,10 @@ PreCommit:
     enabled: true
     on_warn: fail
     problem_on_unmodified_line: ignore
+    exclude:
+      - db/schema.rb
+      - test/**/*.rb
+      - Gemfile
 
   BundleAudit:
     enabled: true
