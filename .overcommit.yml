@@ -1,0 +1,15 @@
+verify_signatures: false
+PrePush:
+  Brakeman:
+    enabled: true
+
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    problem_on_unmodified_line: ignore
+
+  BundleAudit:
+    enabled: true
+    on_warn: fail
+    problem_on_unmodified_line: ignore
