@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chat: one
+  user: one
+  joined_at: 2025-03-27 13:03:33
+  left_at: 2025-03-27 13:03:33
+  active: false
+  role: 1
+
+two:
+  chat: two
+  user: two
+  joined_at: 2025-03-27 13:03:33
+  left_at: 2025-03-27 13:03:33
+  active: false
+  role: 1
