@@ -13,6 +13,7 @@ PreCommit:
       - db/schema.rb
       - test/**/*.rb
       - Gemfile
+      - db/migrate/20250327043021_create_active_storage_tables.active_storage.rb
 
   BundleAudit:
     enabled: true

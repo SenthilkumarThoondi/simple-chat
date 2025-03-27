@@ -13,6 +13,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag current_user.profile_image, style: "width: 50px; border-radius: 50%" %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Login', new_user_session_path %>
+      <%= link_to 'Signup', new_user_registration_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
