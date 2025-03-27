@@ -1,6 +1,10 @@
 AllCops:
   NewCops: enable
   EnabledByDefault: false
+  Exclude:
+    - db/schema.rb
+    - db/migrate/20250327043021_create_active_storage_tables.active_storage.rb
+    - db/seeds.rb
 
 Layout/LineLength:
   Max: 120
@@ -9,3 +13,5 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 15
+  Exclude:
+    - db/migrate/*.rb
