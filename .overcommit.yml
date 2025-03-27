@@ -1,0 +1,21 @@
+verify_signatures: false
+
+PrePush:
+  Brakeman:
+    enabled: true
+
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    problem_on_unmodified_line: ignore
+    exclude:
+      - db/schema.rb
+      - test/**/*.rb
+      - Gemfile
+      - db/migrate/20250327043021_create_active_storage_tables.active_storage.rb
+
+  BundleAudit:
+    enabled: true
+    on_warn: fail
+    problem_on_unmodified_line: ignore

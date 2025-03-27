@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Installing Bootstrap 
+` https://gist.github.com/rubyandcoffee/592cdf13586548a7a26c30adeeb7adc2 ` 
