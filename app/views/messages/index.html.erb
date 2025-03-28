@@ -1,0 +1,16 @@
+<%= link_to "back", chats_path %>
+<h2>
+  <%= image_tag @chat.display_image(current_user), style: "width: 30px; height: 30px; object-fit: cover; border-radius: 50%" %>
+  <%= @chat.display_name(current_user) %>
+</h2>
+<p>
+  <% if @chat.is_group? && @chat.owner %>
+    <%= @chat.owner.username %> has started a group chat
+  <% end %>
+</p>
+
+<div id="messages">
+  <% @messages.each do |message| %>
+    <%= render message %>
+  <% end %>
+</div>

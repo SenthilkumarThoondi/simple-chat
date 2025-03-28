@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+  <h5>
+    <%= link_to user.email,
+                chats_path(user_id: user.id),
+                data: { turbo_method: :post } %>
+  </h5>
+<% end %>
