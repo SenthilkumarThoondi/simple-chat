@@ -13,6 +13,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= turbo_stream_from "user_#{ current_user&.id }" %>
     <nav>
       <% if user_signed_in? %>
         <%= current_user.username %>

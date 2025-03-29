@@ -12,7 +12,19 @@ class MessagesController < ApplicationController
   def create
     @message = @chat.messages.new(message_params)
     if @message.save
-      redirect_to chat_messages_path(@chat)
+      Turbo::StreamsChannel.broadcast_append_to(
+        "chat_#{@chat.id}",
+        target: 'messages',
+        partial: 'messages/message',
+        locals: { message: @message, class_names: 'message' }
+      )
+
+      Turbo::StreamsChannel.broadcast_replace_to(
+        "user_#{current_user.id}",
+        target: "message_#{@message.id}",
+        partial: 'messages/message',
+        locals: { message: @message, class_names: 'message message-sender' }
+      )
     else
       render :index
     end

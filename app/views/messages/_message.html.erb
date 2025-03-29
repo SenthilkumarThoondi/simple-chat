@@ -1,4 +1,4 @@
-<div style="color: <%= message.sender_id == current_user.id ? "teal" : "black" %>">
+<div class="<%= class_names %>" id="message_<%= message.id %>">
   <%= message.updated_at.strftime("%I:%M %p") %> :
   <b><%= message.content %></b>
 </div>
