@@ -16,6 +16,8 @@ class ChatUser < ApplicationRecord
 
   before_update :update_active_status, if: -> { will_save_change_to_left_at? }
 
+  scope :active_users, -> { where(active: true) }
+
   private
 
   def update_active_status

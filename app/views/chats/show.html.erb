@@ -1,0 +1,18 @@
+<%= link_to "back", chat_messages_path(@chat) %>
+<%= image_tag @chat.display_image(current_user), style: "width: 30px; height: 30px; object-fit: cover; border-radius: 50%" %>
+<%= @chat.display_name(current_user) %>
+<h3>Members</h3>
+<% @chat.chat_users.active_users.each do |chat_user| %>
+  <div class="d-flex">
+    <%= image_tag chat_user.user.profile_image, style: "width: 30px; height: 30px; object-fit: cover; border-radius: 50%" %>
+    <h5>
+      <%= chat_user.user.username %>
+    </h5>
+    <p class="fs-6 text-secondary ms-3"><%= chat_user.role.humanize %></p>
+    <% unless chat_user.owner? %>
+      <%= link_to "Remove", remove_user_chat_path(@chat, chat_user_id: chat_user.id), data: { turbo_method: :patch }, style: "color: red;" %>
+    <% end %>
+<!--    <p class="fs-6 text-secondary ms-3" style="color: red"></p>-->
+  </div>
+<% end %>
+<%= link_to 'Add User', new_user_chat_path(@chat) %>

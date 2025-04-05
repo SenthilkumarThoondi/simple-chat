@@ -2,7 +2,7 @@
 <%= link_to "back", chats_path %>
 <h2>
   <%= image_tag @chat.display_image(current_user), style: "width: 30px; height: 30px; object-fit: cover; border-radius: 50%" %>
-  <%= @chat.display_name(current_user) %>
+  <%= link_to @chat.display_name(current_user), chat_path(@chat) %>
 </h2>
 <p>
   <% if @chat.is_group? && @chat.owner %>

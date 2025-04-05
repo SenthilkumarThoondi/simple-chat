@@ -18,6 +18,16 @@ class ChatsController < ApplicationController
     @group_chat = Chat.new
   end
 
+  def show
+    @chat = Chat.find_by(id: params[:id])
+  end
+
+  def new_user
+    @chat = Chat.find_by(id: params[:id])
+    selected_user_ids = @chat.users
+    @users = User.excluding(selected_user_ids)
+  end
+
   def create
     result = ChatService.new(current_user).create_new_chat(chat_params[:user_id])
     if result.is_a?(Chat)
@@ -35,6 +45,26 @@ class ChatsController < ApplicationController
     else
       flash[:alert] = result.join(', ')
       redirect_to new_group_chat_path
+    end
+  end
+
+  def join_new_user
+    result = ChatService.new(current_user).join_new_user(params[:id], group_chat_params[:user_ids])
+    if result.is_a?(Chat)
+      redirect_to chat_messages_path(result)
+    else
+      flash[:alert] = result.join(', ')
+      redirect_to new_user_chat_path
+    end
+  end
+
+  def remove_user
+    result = ChatService.new(current_user).remove_user(params)
+    if result.is_a?(Chat)
+      redirect_to chat_messages_path(result)
+    else
+      flash[:alert] = result.join(', ')
+      redirect_to new_user_chat_path
     end
   end
 

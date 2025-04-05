@@ -1,5 +1,5 @@
 <h1>Chats</h1>
-
+<%= turbo_stream_from "user_#{ current_user&.id }" %>
 <div id="chats">
   <% @chats.each do |chat| %>
     <%= link_to chat_messages_path(chat) do %>

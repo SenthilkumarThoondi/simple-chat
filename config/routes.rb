@@ -9,6 +9,11 @@ Rails.application.routes.draw do
       get :new_group
       post :create_group
     end
+    member do
+      get :new_user
+      patch :join_new_user
+      patch :remove_user
+    end
   end
   get 'new_group_chat', to: 'chats#new_group_chat', as: :new_group_chat
   post 'create_group_chat', to: 'chats#create_group_chat', as: :create_group_chat
